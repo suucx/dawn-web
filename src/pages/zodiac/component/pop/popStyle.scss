@@ -1,0 +1,597 @@
+.wm-game-pop-main-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 50;
+
+    &.show {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .pop-main {
+            animation: wemewPopMain 0.4s linear forwards;
+        }
+    }
+
+    &.has-mask {
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+
+    .pop-main {
+        position: absolute;
+        width: 750px;
+        height: 870px;
+        box-sizing: border-box;
+        padding-top: 100px;
+        background: url($imgUrl + '/game/zodiac/pop_bg.png') no-repeat center/cover;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .pop-btn {
+            width: 320px;
+            height: 88px;
+            background: url($imgUrl +'/game/zodiac/pay_btn_bg_1.png') no-repeat center/cover;
+            font-family: PangMenZhengDao;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 48px;
+
+            &::before {
+                content: attr(data-name);
+                background: linear-gradient(180deg, #923f03 0%, #593311 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+
+                -webkit-text-fill-color: transparent;
+                color: transparent;
+            }
+        }
+
+        &.game-prize-pop {
+            .pop-title {
+
+                .title-text,
+                .sub-title-text {
+                    font-family: PangMenZhengDao;
+                    font-size: 20px;
+                    background: linear-gradient(180deg, #dbc382 0%, #c89773 100%);
+                    background-clip: text;
+                    -webkit-background-clip: text;
+
+                    -webkit-text-fill-color: transparent;
+                    color: transparent;
+                    text-align: center;
+                }
+
+                .title-text {
+                    font-size: 60px;
+                }
+
+                margin-bottom: 30px;
+            }
+
+            .pop-cont {
+                position: relative;
+                width: 320px;
+                height: 320px;
+                padding: 10px;
+                position: relative;
+                border: 2px solid;
+                border-image: linear-gradient(0deg, #bf813a 0%, #f2d9a3 100%) 2 2;
+                margin-bottom: 100px;
+
+                .prize-img-box {
+                    position: absolute;
+                    width: 320px;
+                    height: 320px;
+                    background: linear-gradient(0deg,#231918 0%, #7f6547 100%);
+                    .prize-img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .prize-name {
+                    padding-top: 16px;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translate(-50%, 100%);
+                    background: linear-gradient(180deg, #dbc382 0%, #c89773 100%);
+                    background-clip: text;
+                    -webkit-background-clip: text;
+
+                    -webkit-text-fill-color: transparent;
+                    color: transparent;
+                    white-space: nowrap;
+                    font-size: 48px;
+                    font-family: PangMenZhengDao;
+                }
+            }
+
+            .pop-btn-box {
+                .pop-btn.disabled {
+                    background-image: url($imgUrl + '/game/zodiac/btn_bg_gray.png');
+
+                    &::before {
+                        content: attr(data-name);
+                        background: linear-gradient(180deg, #4a4a4a 0%, #353535 100%);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+
+                        -webkit-text-fill-color: transparent;
+                        color: transparent;
+                    }
+                }
+            }
+
+
+        }
+
+        &.game-get-prize-pop {
+            .pop-title {
+                position: absolute;
+                top: 0;
+
+                .title-img {
+                    height: 80px;
+                }
+            }
+
+            .pop-cont {
+                margin-top: 100px;
+                position: relative;
+                width: 340px;
+                height: 340px;
+                box-sizing: border-box;
+                padding: 10px;
+                position: relative;
+                border: 2px solid;
+                border-image: linear-gradient(0deg, #bf813a 0%, #f2d9a3 100%) 2 2;
+                margin-bottom: 100px;
+
+                .prize-box {
+                    width: 100%;
+                    height: 100%;
+                    .prize-img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .prize-name {
+                    padding-top: 16px;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translate(-50%, 100%);
+                    background: linear-gradient(180deg, #dbc382 0%, #c89773 100%);
+                    background-clip: text;
+                    -webkit-background-clip: text;
+
+                    -webkit-text-fill-color: transparent;
+                    color: transparent;
+                    white-space: nowrap;
+                    font-size: 48px;
+                    font-family: PangMenZhengDao;
+                    text-align: center;
+                }
+            }
+
+            .pop-btn-box {
+                position: absolute;
+                bottom: -110px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                .pop-btn {
+                    margin-bottom: 10px;
+                }
+
+                .text-btn {
+                    display: inline-flex;
+                    width: 120px;
+                    height: 40px;
+                    background: none;
+                    font-size: 30px;
+                    color: #B47833;
+                    border-bottom: 2px solid #996225;
+                }
+            }
+
+        }
+
+        // 生肖抽取 结果弹窗
+        &.game-result-pop {
+            .pop-title {
+                position: absolute;
+                top: 0;
+                transform: translateY(-24%);
+
+                .title-img {
+                    height: 200px;
+                }
+            }
+
+            .pop-cont {
+                margin-top: 60px;
+                height: 620px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+
+                .zodiac-icon-list {
+                    display: flex;
+                    margin-top: 40px;
+
+                    .zodiac-icon {
+                        width: 113px;
+                        height: 113px;
+                    }
+                }
+
+                .max-score-box {
+                    margin-top: 30px;
+                    display: flex;
+                    align-items: center;
+
+                    .max-score-zodiac-icon {
+                        width: 105px;
+                        height: 105px;
+                    }
+
+                    .max-score-text {
+                        position: relative;
+                        font-size: 90px;
+                        font-family: PangMenZhengDao;
+                        color: transparent;
+                        white-space: nowrap;
+                        transform: skew(-10deg);
+
+
+                        &::before,
+                        &::after {
+                            content: attr(data-name);
+                            position: absolute;
+                            left: 0;
+                        }
+
+                        &::before {
+                            -webkit-text-stroke: 15px #6C492A;
+                        }
+
+                        &::after {
+                            background: linear-gradient(180deg, #fff3d1 0%, #ffd973 50%, #c17838 100%);
+                            background-clip: text;
+                            -webkit-background-clip: text;
+
+                            -webkit-text-fill-color: transparent;
+                            color: transparent;
+                        }
+                    }
+
+                }
+
+                .score-list-box-cont {
+                    position: relative;
+                    height: 300px;
+                    margin-top: 60px;
+
+                    .score-list-box {
+                        height: 240px;
+                        display: grid;
+                        grid-template-columns: repeat(3, 190px);
+                        grid-template-rows: repeat(auto-fill, 60px);
+
+                        .score-item-box {
+                            height: 40px;
+                            display: flex;
+                            align-items: center;
+
+                            .score-zodiac-icon {
+                                width: 42px;
+                                height: 42px;
+                            }
+
+                            .score-text {
+                                position: relative;
+                                font-size: 36px;
+                                font-family: PangMenZhengDao;
+                                color: transparent;
+                                white-space: nowrap;
+                                transform: skew(-10deg);
+
+
+                                &::before,
+                                &::after {
+                                    content: attr(data-name);
+                                    position: absolute;
+                                    left: 0;
+                                }
+
+                                &::before {
+                                    -webkit-text-stroke: 10px #6C492A;
+                                }
+
+                                &::after {
+                                    background: linear-gradient(180deg, #fff3d1 0%, #ffd973 50%, #c17838 100%);
+                                    background-clip: text;
+                                    -webkit-background-clip: text;
+
+                                    -webkit-text-fill-color: transparent;
+                                    color: transparent;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+
+            .pop-btn-box {
+                position: absolute;
+                bottom: 130px;
+
+                &.has-more {
+                    bottom: -40px;
+                }
+            }
+        }
+
+        // 游戏规则 弹窗
+        &.game-rule-pop {
+            .pop-title {
+                position: absolute;
+                top: 0;
+
+                .title-img {
+                    height: 60px;
+                }
+            }
+
+            .pop-cont {
+                margin-top: 10px;
+                width: 540px;
+                text-align: center;
+
+                .pop-text {
+                    font-size: 30px;
+                    color: #AC8E6B;
+                    white-space: nowrap;
+                    line-height: 1.4;
+                }
+
+                .pop-title-text {
+                    font-size: 26px;
+                }
+
+                .pop-sub-title {
+                    margin-top: 30px;
+                    margin-bottom: 5px;
+                    font-size: 36px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: linear-gradient(180deg, #dbc382 0%, #c89773 100%);
+                    background-clip: text;
+                    -webkit-background-clip: text;
+
+                    -webkit-text-fill-color: transparent;
+                    color: transparent;
+
+                    &::before,
+                    &::after {
+                        content: '';
+                        display: inline-block;
+                        position: relative;
+                        width: 10px;
+                        height: 10px;
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        background: linear-gradient(180deg, #dbc382 0%, #c89773 100%);
+                        transform: rotate(-45deg);
+                    }
+                }
+
+                .sub {
+                    margin: 0 auto 30px;
+                    width: 470px;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .pop-zodiac-score-config-box {
+                    width: 540px;
+                    height: 230px;
+                    background: rgba($color: #0E0A0A, $alpha: .62);
+                    border: 2px solid #3D3531;
+                    border-right: none;
+                    border-bottom: none;
+                    box-sizing: border-box;
+                    display: grid;
+                    grid-template-columns: repeat(6, 1fr);
+                    grid-template-rows: repeat(2, 1fr);
+
+                    .zodiac-score-item {
+                        color: #AC8E6B;
+                        font-size: 30px;
+                        display: flex;
+                        flex-direction: column;
+
+                        span {
+                            flex: 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            box-sizing: border-box;
+                            border-right: 2px solid #3D3531;
+                            border-bottom: 2px solid #3D3531;
+                        }
+                    }
+                }
+            }
+
+            .pop-btn-box {
+                position: absolute;
+                bottom: -40px;
+            }
+
+        }
+
+        &.game-my-prize-pop {
+            .pop-title {
+                position: absolute;
+                top: 0;
+
+                .title-img {
+                    height: 80px;
+                }
+            }
+
+            .pop-cont {
+                height: 680px;
+                width: 540px;
+                box-sizing: border-box;
+                overflow-y: auto;
+
+                .prize-box {
+                    position: relative;
+                    width: 100%;
+                    height: 164px;
+                    margin-top: 44px;
+                    display: flex;
+
+                    .prize-img-box {
+                        width: 164px;
+                        height: 164px;
+                        box-sizing: border-box;
+                        border: 2px solid;
+                        border-image: linear-gradient(0deg, #fdbb5f 0%, #eed48f 100%) 2 2;
+                        background: linear-gradient(0deg,#644221 0%, #13091e 100%);
+                        margin-right: 20px;
+                        .prize-img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .prize-info {
+                        height: 100%;
+                        padding-top: 15px;
+                        box-sizing: border-box;
+                        font-family: PangMenZhengDao;
+                        position: relative;
+                        .pop-text {
+                            display: block;
+                            white-space: nowrap;
+                            background: linear-gradient(180deg,#dbc382 0%, #c89773 100%);
+                            background-clip: text;
+                            color: transparent;
+                            font-size: 36px;
+                            height: 36px;
+                            line-height: 36px;
+                            margin-bottom: 15px;
+                        }
+                        .prize-time {
+                            position: absolute;
+                            color: #836036;
+                            font-size: 24px; 
+                        }
+
+                        
+                    }
+                    .handle-btn {
+                        position: absolute;
+                        right: 0;
+                        bottom: 10px;
+                        width: 148px;
+                        height: 44px;
+                        background: linear-gradient(to bottom, #FDBA5C, #EDD795);
+                        box-sizing: border-box;
+                        border: 1px solid #DCDCDC;
+                        border-radius: 22px;
+                        text-align: center;
+                        line-height: 44px;
+                        color: #D07233;
+                        font-size: 30px;
+                        font-family: PangMenZhengDao;
+                        &.disabled {
+                            background: #B8B8B8;
+                            color: #464646;
+                        }
+
+                    }
+                    
+                }
+            }
+            .pop-btn-box {
+                position: absolute;
+                bottom: -40px;
+            }
+        }
+
+        &.game-tip-pop {
+            .pop-cont {
+                height: 600px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .pop-tip-text {
+                background: linear-gradient(180deg, #DBC382 0%, #C89773 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                color: transparent;
+                font-size: 48px;
+                font-family: PangMenZhengDao;
+            }
+
+            .pop-btn-box {
+                position: absolute;
+                bottom: 130px;
+            }
+        }
+        
+    }
+}
+
+
+@keyframes wemewPopMain {
+    0% {
+        transform: scale(0.5)
+    }
+
+    40% {
+        transform: scale(1.1)
+    }
+
+    60% {
+        transform: scale(0.9)
+    }
+
+    80% {
+        transform: scale(1.05)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
